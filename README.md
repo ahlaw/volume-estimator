@@ -34,7 +34,7 @@ Navigate to the project directory:
 
 Install the dependencies:
 ```
-pip -r requirements.txt
+pip install -r requirements.txt
 ```
 
 You're good to go!
