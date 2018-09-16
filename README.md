@@ -37,6 +37,8 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
+and
+
 ```
 npm install
 ```
