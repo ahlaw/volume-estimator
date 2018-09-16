@@ -1,0 +1,25 @@
+{
+  "name": "volume-estimator",
+  "version": "1.0.0",
+  "description": "Approximates volume and nutrition",
+  "main": "FE/index.js",
+  "scripts": {
+    "test": "node FE/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahlaw/volume-estimator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahlaw/volume-estimator/issues"
+  },
+  "homepage": "https://github.com/ahlaw/volume-estimator#readme",
+  "dependencies": {
+    "@google-cloud/vision": "^0.22.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1"
+  }
+}
