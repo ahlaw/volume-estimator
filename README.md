@@ -37,4 +37,13 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-You're good to go!
+```
+npm install
+```
+
+Run web server:
+```
+npm start
+```
+
+You're good to go! Open your browser at http://localhost:3000 to start!

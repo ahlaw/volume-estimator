@@ -4,6 +4,7 @@
   "description": "Approximates volume and nutrition",
   "main": "FE/index.js",
   "scripts": {
+    "start": "node FE/index.js",
     "test": "node FE/index.js"
   },
   "repository": {
