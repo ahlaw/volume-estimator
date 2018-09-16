@@ -1,10 +1,11 @@
-var express = require('express');
-var formidable = require('formidable');
-var path = require('path');
+const express = require('express');
+const formidable = require('formidable');
+const path = require('path');
+const identify = require('./identify');
 
-var app = express();
+const app = express();
 
-var public = path.join(__dirname, 'public')
+const public = path.join(__dirname, 'public')
 
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -23,6 +24,14 @@ app.post('/', function (req, res){
 
     form.on('file', function (name, file){
         console.log('Uploaded ' + file.name);
+        
+        identify.getLabels(file.path)
+            .then(arr => {
+                console.log(arr);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     });
 
     res.sendFile(__dirname + '/index.html');
