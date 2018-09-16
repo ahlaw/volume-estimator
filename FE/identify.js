@@ -31,10 +31,7 @@ function getLabels(filepath) {
           }
         });
 
-        getNutrients(description)
-          .then(res => {
-            resolve(res);
-          });
+        resolve(description);
       })
       .catch(err => {
         reject('ERROR:' + err);
@@ -46,16 +43,19 @@ function getLabels(filepath) {
  * Get nutrient facts from API
  * @param {string} item - Item to look up nutrients 
  */
-function getNutrients(item){
+function getNutrients(filepath){
   return new Promise((resolve, reject) => {
-    axios.get(`https://api.edamam.com/api/food-database/parser?nutrition-type=logging&ingr=${item.toString().replace(' ', '%20')}&app_id=${process.env.EDAMAM_APPID}&app_key=${process.env.EDAMAM_APPKEY}`)
-      .then(res => {
-        // console.log(res.data.hints[0].food.nutrients);
-        resolve(res.data.hints[0].food.nutrients);
-      })
-      .catch(err => {
-        eject("Error:" + err);
-      });
+    getLabels(filepath)
+      .then(item => {
+        axios.get(`https://api.edamam.com/api/food-database/parser?nutrition-type=logging&ingr=${item.toString().replace(' ', '%20')}&app_id=${process.env.EDAMAM_APPID}&app_key=${process.env.EDAMAM_APPKEY}`)
+          .then(res => {
+            // console.log(res.data.hints[0].food.nutrients);
+            resolve(res.data.hints[0].food.nutrients.ENERC_KCAL);
+          })
+          .catch(err => {
+            eject("Error:" + err);
+          });
+      });   
   });  
 }
 

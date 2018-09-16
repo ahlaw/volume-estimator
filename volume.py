@@ -50,7 +50,7 @@ def main(images):
         area = math.pi * radius ** 2
         slice_areas.append(area)
 
-    return sum(slice_areas) * scale
+    print(sum(slice_areas) * scale)
 
 if __name__ == '__main__':
     # store arguments in list args.image
