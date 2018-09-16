@@ -33,8 +33,21 @@ app.post('/', function (req, res){
 
                 py.stdout.on('data', function(data){
                     // console.log(data.toString('utf-8'));
-                    console.log(result*data.toString('utf-8')/104500);
-                    res.sendFile(__dirname + '/index.html');
+                    let ratio = data.toString('utf-8')/104500;      // Hard coded average volume of an apple
+                    
+                    // Insert ration into avg values
+                    for (key of Object.keys(result)) {
+                        result[key] *= ratio;
+                    }
+                    
+                    // console.log(totalCal);
+                    // res.sendFile(__dirname + '/index.html');
+                    res.writeHeader(200, {"Content-Type": "text/html"});  
+                    res.write("<h1>Results Calculated!</h1><p>Total Calories: " + result.ENERC_KCAL.toFixed(2) 
+                        + " Calories</p><p>Protein: " + result.PROCNT.toFixed(2) 
+                        + " g</p><p>Fat: " + result.FAT.toFixed(2) 
+                        + " g</p><p>Carbs: " + result.CHOCDF.toFixed(2) + " g</p>");  
+                    res.end();
                 });
             })
             .catch(err => {

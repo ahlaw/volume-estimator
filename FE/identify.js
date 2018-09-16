@@ -50,7 +50,9 @@ function getNutrients(filepath){
         axios.get(`https://api.edamam.com/api/food-database/parser?nutrition-type=logging&ingr=${item.toString().replace(' ', '%20')}&app_id=${process.env.EDAMAM_APPID}&app_key=${process.env.EDAMAM_APPKEY}`)
           .then(res => {
             // console.log(res.data.hints[0].food.nutrients);
-            resolve(res.data.hints[0].food.nutrients.ENERC_KCAL);
+            // resolve(res.data.hints[0].food.nutrients.ENERC_KCAL);
+
+            resolve(res.data.hints[0].food.nutrients);
           })
           .catch(err => {
             eject("Error:" + err);
